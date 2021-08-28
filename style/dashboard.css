@@ -134,6 +134,9 @@ section {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Rubik', sans-serif;
 }
+.card {
+  border: hidden !important;
+}
 .new-header{
 border-top-left-radius: 20px !important;
 border-top-right-radius: 20px !important;
@@ -144,4 +147,10 @@ border-top-right-radius: 20px !important;
 }
 .new-input {
   border-radius: 20px !important;
+}
+.valid {
+  border: forestgreen solid 2px!important;
+}
+.invalid {
+  border: firebrick solid 2px !important;
 }
