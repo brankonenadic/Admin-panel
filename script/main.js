@@ -34,7 +34,7 @@ $(document).ready(function(){
             success: function (response) {
               if (response) {
                 console.log(response);
-                document.location.reload(true);
+                //document.location.reload(true);
               } else {
                
                console.log(response);

@@ -1,6 +1,6 @@
 <nav class="navbar bg-dark navbar-dark navbar-expand-md fixed-top">
 <a class="navbar-brand" href="./index">
-    <img src=".\assets\img\logo\LTgold2.png" width="50" height="30" class="d-inline-block align-top" alt="logo">LaninTata
+    <img src=".\assets\img\logo\LTgold2.png" width="50" height="30" class="d-inline-block align-top" alt="logo">
 </a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

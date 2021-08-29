@@ -36,8 +36,8 @@
             <!-- Card body end -->
             <!-- Card footer start -->
             <div class="card-footer bg-dark p-3 text-light d-flex justify-content-around new-footer">
-                <a class="text-decoration-none text-light" href="./registar">Create new accaount?</a>
-                <a class="text-decoration-none text-light" href="./forgotPassword">Forgot password?</a>
+                <a class="text-decoration-none text-light" href="./registar">Create new accaount ?</a>
+                <a class="text-decoration-none text-light" href="./forgotPassword">Forgot password ?</a>
             </div>
             <!-- Card footer end -->
         </div>
