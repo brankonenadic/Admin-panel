@@ -10,7 +10,7 @@ $(document).ready(() =>{
     const regEmail = /^[a-z]+[0-9a-zA-Z_\.]*@[a-z_]+\.[a-z]+$/;
 
     const registarPassword = $('#registarPassword');
-    const registarPasswordMsg = $('.registarPasword-error');
+    const registarPasswordMsg = $('.registarPassword-error');
 
     const rePassword = $('#rePassword');
     const rePasswordMsg = $('.rePassword-error');
@@ -38,7 +38,7 @@ $(document).ready(() =>{
             'registarEmail': registarEmailChacked,
             'registarPassvord': registarPasswordChacked,
             'rePassword': rePasswordChecked,
-            'submit': registarSubmit
+            'registar': registarSubmit
           },
           success: function(response){
             if (response){
@@ -87,7 +87,7 @@ $(document).ready(() =>{
               fullname.addClass('invalid'); 
            }
          }
-       })
+       });
       
       }
 
@@ -96,18 +96,92 @@ $(document).ready(() =>{
 /* Check fullname end */
     registarEmail.focusout(() => {
 
-      console.log('Pozz iz email inputa');
-          })
+      if (registarEmail.val() == '') {
+        registarEmailMsg.text('Email is required !');
+        registarEmail.removeClass('valid');
+        registarEmail.addClass('invalid');
+      } else if (!regEmail.test(registarEmail.val())) {
+        registarEmailMsg.text('Enter valid email address !');
+        registarEmail.removeClass('valid');
+        registarEmail.addClass('invalid');
+      } else {
+        checkEmail = registarEmail.val();
+
+        $.ajax({
+
+          type: 'post',
+          url: './includes/registar.inc.php',
+          data: {
+            'checkEmail': checkEmail
+          },
+          success: function(response){
+            if (response){
+              console.log(response);
+              registarEmailMsg.text('');
+              registarEmail.removeClass('invalid');
+              registarEmail.addClass('valid');
+            } else {
+              console.log(response);
+              registarEmailMsg.text(response);
+              registarEmail.removeClass('valid');
+              registarEmail.addClass('invalid');
+            }
+          }
+        });
+      }
+    });
 
     registarPassword.focusout(() => {
+        if (registarPassword.val() == '') {
+          registarPasswordMsg.text('Password is required !');
+          registarPassword.removeClass('valid');
+          registarPassword.addClass('invalid');
+        } else if (!regPassword.test(registarPassword.val())) {
+          registarPasswordMsg.text('Password should contain at least one digit,one capital letter,one small letter,one special characters and min 8 characters!');
+          registarPassword.removeClass('valid');
+          registarPassword.addClass('invalid');
+        } else {
+          checkPassword = registarPassword.val();
 
-      console.log('Pozz iz passsword inputa');
-                })
+          $.ajax({
+            type: 'post',
+            url: './includes/registar.inc.php',
+            data: {
+              'checkPassord': checkPassword
+            },
+            success: function(response) {
+              if (response) {
+                console.log(response);
+                registarPasswordMsg.text('');
+                registarPassword.removeClass('invalid');
+                registarPassword.addClass('valid');
+              } else {
+                console.log(response);
+                registarPasswordMsg.text(response);
+                registarPassword.removeClass('valid');
+                registarPassword.addClass('invalid');
+              }
+            }
+          });
+        }  
+    });
 
     rePassword.focusout(() => {
 
-      console.log('Pozz iz rePassword inputa');
-                      })
+      if (rePassword.val() == '') {
+        rePasswordMsg.text('Ree passowrd is required !');
+        rePassword.removeClass('valid');
+        rePassword.addClass('invalid');
+      } else if (rePassword.val() !== registarPassword.val()) {
+        rePasswordMsg.text('Password and ree password should be same !');
+        rePassword.removeClass('valid');
+        rePassword.addClass('invalid');
+      } else {
+        rePasswordMsg.text('');
+        rePassword.removeClass('invalid');
+        rePassword.addClass('valid');
+      }
+    });
 
 }) 
 /* Registar end */

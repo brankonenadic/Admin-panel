@@ -38,7 +38,7 @@
                 <!-- RePassword input end -->
                 <!-- Submit button start-->  
                 <div class="form-group p-3">
-                <button type="submit" id="registar"value="registar"  class="btn btn-outline-dark form-control p-2 new-input">Registar</button>
+                <button type="submit" name="registar" id="registar"value="registar"  class="btn btn-outline-dark form-control p-2 new-input">Registar</button>
                 </div>
                 <!-- Submit button end -->
                 </form> 
