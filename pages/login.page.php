@@ -13,7 +13,7 @@
             <!-- Card header end -->
             <!-- Card body start -->
             <div class="card-body bg-light">
-                <form action="" class="">
+                <form method="POST" id="loginForm">
                 <!-- Email input start-->  
                 <div class="form-group p-3">
                     <input type="email" name="loginEmail" id="loginEmail" class="form-control p-2 new-input" placeholder="Enter Email..." autocomplete="off" required>

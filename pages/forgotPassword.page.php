@@ -14,7 +14,7 @@
             <!-- Card header end -->
             <!-- Card body start -->
             <div class="card-body bg-light">
-                <form action="" class="">
+                <form method="POST" id="forgotPasswordForm">
                 <!-- Email input start-->  
                 <div class="form-group p-3">
                     <input type="email" name="forgotPasswordEmail" id="forgotPasswordEmail" class="form-control p-2 new-input" placeholder="Enter Email..." autocomplete="off" required>
