@@ -19,9 +19,9 @@ $(document).ready(() =>{
 
     
 
-    $('#registrationForm').submit((e) => {
+    $('#registarForm').submit((e) => {   
       e.preventDefault();
-
+  
       if ($('input').hasClass('invalid')){
         return false;
       } else {
@@ -109,7 +109,6 @@ $(document).ready(() =>{
         let checkEmail = registarEmail.val();
 
         $.ajax({
-
           type: 'post',
           url: './includes/registar.inc.php',
           data: {
