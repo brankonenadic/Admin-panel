@@ -1,6 +1,6 @@
 'use strict';
 /* Registar start */
-$(document).ready(() =>{ 
+$(document).ready(() => { 
 
     const fullname = $('#fullname');
     const fullnameMsg = $('.fullname-error');
@@ -188,7 +188,7 @@ $(document).ready(() =>{
 
 /* login start */
 
-$(document).ready(() => {
+$(document).ready(() => { 
 
   const loginEmail = $('#loginEmail');
   const loginEmailMsg = $('.loginEmail-error');
@@ -196,7 +196,8 @@ $(document).ready(() => {
 
   const loginPassword = $('#loginPassword');
   const loginPasswordMsg = $('.loginPassword-error');
-
+  const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
+  
   const loginForm = $('#loginForm');
 
   loginForm.submit((e) => {
@@ -249,7 +250,7 @@ $(document).ready(() => {
         data: {
           'checkLoginEmail': checkLoginEmail
         },
-        succes: function(response) {
+        success: function(response) {
           if (response) {
             console.log(response);
             loginEmailMsg.text('');
@@ -266,6 +267,40 @@ $(document).ready(() => {
     }
   });
 
+  loginPassword.focusout(() => {
+    if (loginPassword.val() == '') {
+      loginPasswordMsg.text('Password is required !');
+      loginPassword.removeClass('valid');
+      loginPassword.addClass('invalid');
+    } else if (!regPassword.test(loginPassword.val())) {
+      loginPasswordMsg.text('Enter valid password !');
+      loginPassword.removeClass('valid');
+      loginPassword.addClass('invalid');
+    } else {
+      let checkPassword = loginPassword.val();
+
+      $.ajax({
+        type: 'post',
+        url: './includes/login.inc.php',
+        data: {
+          'checkPassword': checkPassword
+        },
+        success: function(response){
+          if (response) {
+            console.log(response);
+            loginPasswordMsg.text('');
+            loginPassword.removeClass('invalid');
+            loginPassword.addClass('valid');
+          } else {
+            console.log(response);
+            loginPasswordMsg.text(response);
+            loginPassword.removeClass('valid');
+            loginPassword.addClass('invalid');
+          }
+        }
+      });
+    }
+  });
 })
 /* $(document).ready(function(){
   $("#loginForm").submit(function (e) {   
