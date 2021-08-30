@@ -16,10 +16,10 @@ $(document).ready(() =>{
     const rePassword = $('#rePassword');
     const rePasswordMsg = $('.rePassword-error');
     const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
-
     
+    const registarForm = $('#registarForm');
 
-    $('#registarForm').submit((e) => {   
+    registarForm.submit((e) => {   
       e.preventDefault();
   
       if ($('input').hasClass('invalid')){
@@ -56,15 +56,15 @@ $(document).ready(() =>{
     fullname.focusout(() => {
 
       if (fullname.val() == '') {
-          fullnameMsg.text('Fullname is required !');
+          fullnameMsg.text('*Fullname is required !');
           fullname.removeClass('valid');
           fullname.addClass('invalid');
       } else if (!regfullname.test(fullname.val())) {
-          fullnameMsg.text('Enter valid fullname !');
+          fullnameMsg.text('*Enter valid fullname !');
           fullname.removeClass('valid');
           fullname.addClass('invalid');        
       } else if (fullname.val().length < 3) {
-          fullnameMsg.text('Fullname mast have 3 charters !');
+          fullnameMsg.text('*Fullname mast have 3 charters !');
           fullname.removeClass('valid');
           fullname.addClass('invalid');   
       } else {
@@ -98,11 +98,11 @@ $(document).ready(() =>{
     registarEmail.focusout(() => {
 
       if (registarEmail.val() == '') {
-        registarEmailMsg.text('Email is required !');
+        registarEmailMsg.text('*Email is required !');
         registarEmail.removeClass('valid');
         registarEmail.addClass('invalid');
       } else if (!regEmail.test(registarEmail.val())) {
-        registarEmailMsg.text('Enter valid email address !');
+        registarEmailMsg.text('*Enter valid email address !');
         registarEmail.removeClass('valid');
         registarEmail.addClass('invalid');
       } else {
@@ -133,11 +133,11 @@ $(document).ready(() =>{
 
     registarPassword.focusout(() => {
         if (registarPassword.val() == '') {
-          registarPasswordMsg.text('Password is required !');
+          registarPasswordMsg.text('*Password is required !');
           registarPassword.removeClass('valid');
           registarPassword.addClass('invalid');
         } else if (!regPassword.test(registarPassword.val())) {
-          registarPasswordMsg.text('Password should contain at least one digit,one capital letter,one small letter,one special characters and min 8 characters!');
+          registarPasswordMsg.text('*Password should contain at least one digit,one capital letter,one small letter,one special characters and min 8 characters!');
           registarPassword.removeClass('valid');
           registarPassword.addClass('invalid');
         } else {
@@ -169,11 +169,11 @@ $(document).ready(() =>{
     rePassword.focusout(() => {
 
       if (rePassword.val() == '') {
-        rePasswordMsg.text('Ree passowrd is required !');
+        rePasswordMsg.text('*Ree passowrd is required !');
         rePassword.removeClass('valid');
         rePassword.addClass('invalid');
       } else if (rePassword.val() !== registarPassword.val()) {
-        rePasswordMsg.text('Password and ree password should be same !');
+        rePasswordMsg.text('*Password and ree password should be same !');
         rePassword.removeClass('valid');
         rePassword.addClass('invalid');
       } else {
@@ -185,34 +185,89 @@ $(document).ready(() =>{
 
 }) 
 /* Registar end */
-/* 
-$(document).ready(function(){
-    $("#registarForm").submit(function (e) {   
-    e.preventDefault();
-    let formData = new FormData(this);
-    $.ajax({
-            type: 'POST',
-            url: './includes/registar.inc.php',
-            enctype: 'multipart/form-data',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-              if (response) {
-                console.log(response);
-                //document.location.reload(true);
-              } else {
-               
-               console.log(response);
-              } 
-            }
-        }
-    );
-  
-  });
-  }); */
+
 /* login start */
-$(document).ready(function(){
+
+$(document).ready(() => {
+
+  const loginEmail = $('#loginEmail');
+  const loginEmailMsg = $('.loginEmail-error');
+  const regEmail = /^[a-z]+[0-9a-zA-Z_\.]*@[a-z_]+\.[a-z]+$/;
+
+  const loginPassword = $('#loginPassword');
+  const loginPasswordMsg = $('.loginPassword-error');
+
+  const loginForm = $('#loginForm');
+
+  loginForm.submit((e) => {
+    e.preventDefault();
+
+    if ($('input').hasClass('invalid')) {
+      return false;
+    } else {
+
+      const loginEmailChecked = loginEmail.val();
+      const loginPasswordChecked = loginPassword.val();
+      const loginSubmit = $('#login').val();
+
+      $.ajax({
+        type: 'post',
+        url: './includes/login.inc.php',
+        data: {
+          'loginEmail': loginEmailChecked,
+          'loginPassword': loginPasswordChecked,
+          'login': loginSubmit
+        },
+        success: function(response) {
+          if (response) {
+            console.log(response);
+
+          } else {
+            console.log(response);
+
+          }
+        }
+      });
+    }
+
+  });
+
+  loginEmail.focusout(() => {
+    if (loginEmail.val() == '') {
+      loginEmailMsg.text('*Email is required !');
+      loginEmail.removeClass('valid');
+      loginEmail.addClass('invalid');
+    } else if (!regEmail.test(loginEmail.val())) {
+      loginEmailMsg.text('*Enter valid email !');
+      loginEmail.removeClass('valid');
+      loginEmail.addClass('invalid');
+    } else {
+      let checkLoginEmail = loginEmail.val();
+      $.ajax({
+        type: 'post',
+        url: './includes/login.inc.php',
+        data: {
+          'checkLoginEmail': checkLoginEmail
+        },
+        succes: function(response) {
+          if (response) {
+            console.log(response);
+            loginEmailMsg.text('');
+            loginEmail.removeClass('invalid');
+            loginEmail.addClass('valid');
+          } else {
+            console.log(response);
+            loginEmailMsg.test(response);
+            loginEmail.removeClass('valid');
+            loginEmail.addClass('invalid');
+          }
+        }
+      });
+    }
+  });
+
+})
+/* $(document).ready(function(){
   $("#loginForm").submit(function (e) {   
   e.preventDefault();
   let formData = new FormData(this);
@@ -236,7 +291,7 @@ $(document).ready(function(){
   );
 
 });
-});
+}); */
 
 /* login end */
 

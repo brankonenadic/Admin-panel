@@ -1,7 +1,7 @@
 <?php
 
 
-if (isset ($_POST['fullname'])) {
+if (isset ($_POST['registar'])) {
     echo 'Success !!!';
     print_r($_POST);
 } else {

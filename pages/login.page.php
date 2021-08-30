@@ -28,7 +28,7 @@
                 <!-- Password input end -->
                 <!-- Submit button start-->  
                 <div class="form-group p-3">
-                <button type="submit" id="login"value="login"  class="btn btn-outline-dark form-control p-2 new-input">Login</button>
+                <button type="submit" id="login" value="login" name="login" class="btn btn-outline-dark form-control p-2 new-input">Login</button>
                 </div>
                 <!-- Submit button end -->
                 </form> 
