@@ -1,3 +1,4 @@
+'use strict';
 /* Registar start */
 $(document).ready(() =>{ 
 
@@ -32,11 +33,11 @@ $(document).ready(() =>{
 
         $.ajax({
           type: 'post',
-          url: './include/regidtar.inc.php',
+          url: './includes/registar.inc.php',
           data: {
             'fullname': fullnameChecked,
             'registarEmail': registarEmailChacked,
-            'registarPassvord': registarPasswordChacked,
+            'registarPassword': registarPasswordChacked,
             'rePassword': rePasswordChecked,
             'registar': registarSubmit
           },
@@ -44,7 +45,7 @@ $(document).ready(() =>{
             if (response){
               console.log(response);
             } else {
-              xonsole.log(tesponse);
+              xonsole.log(response);
             }
           }
 
@@ -67,7 +68,7 @@ $(document).ready(() =>{
           fullname.removeClass('valid');
           fullname.addClass('invalid');   
       } else {
-        checkFullname = fullname.val();
+        let checkFullname = fullname.val();
        $.ajax({
          type: 'post',
          url: './includes/registar.inc.php',
@@ -105,7 +106,7 @@ $(document).ready(() =>{
         registarEmail.removeClass('valid');
         registarEmail.addClass('invalid');
       } else {
-        checkEmail = registarEmail.val();
+        let checkEmail = registarEmail.val();
 
         $.ajax({
 
@@ -141,7 +142,7 @@ $(document).ready(() =>{
           registarPassword.removeClass('valid');
           registarPassword.addClass('invalid');
         } else {
-          checkPassword = registarPassword.val();
+          let checkPassword = registarPassword.val();
 
           $.ajax({
             type: 'post',
@@ -189,7 +190,7 @@ $(document).ready(() =>{
 $(document).ready(function(){
     $("#registarForm").submit(function (e) {   
     e.preventDefault();
-    var formData = new FormData(this);
+    let formData = new FormData(this);
     $.ajax({
             type: 'POST',
             url: './includes/registar.inc.php',
@@ -215,7 +216,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#loginForm").submit(function (e) {   
   e.preventDefault();
-  var formData = new FormData(this);
+  let formData = new FormData(this);
   $.ajax({
           type: 'POST',
           url: './includes/login.inc.php',
@@ -244,7 +245,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#forgotPasswordForm").submit(function (e) {   
   e.preventDefault();
-  var formData = new FormData(this);
+  let formData = new FormData(this);
   $.ajax({
           type: 'POST',
           url: './includes/forgotPassword.inc.php',
