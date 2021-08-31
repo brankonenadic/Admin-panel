@@ -1,5 +1,5 @@
 <?php
-
+include 'autoloader.inc.php';
 
 if (isset ($_POST['registar'])) {
     
