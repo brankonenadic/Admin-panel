@@ -23,7 +23,7 @@
                 <!-- Email input end -->
                 <!-- Submit button start-->  
                 <div class="form-group p-3">
-                <button type="submit" id="forgotPassword" name="forgotPassword" value="forgotPassword"  class="btn btn-outline-dark form-control p-2 new-input">Forgot password</button>
+                <button type="submit" id="forgotPassword" name="forgotPassword" value="forgotPassword" class="btn btn-outline-dark form-control p-2 new-input">Forgot password</button>
                 </div>
                 <!-- Submit button end -->
                 </form> 

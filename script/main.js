@@ -321,7 +321,7 @@ $(document).ready(() => {
       return false;
     } else {
       const forgotPasswordEmailChacked = forgotPasswordEmail.val();
-      const forgotPasswordSubmit = $('#forgotPassword');
+      const forgotPasswordSubmit = $('#forgotPassword').val();
       $.ajax({
         type: 'post',
         url: './includes/forgotPassword.inc.php',
@@ -337,21 +337,6 @@ $(document).ready(() => {
           }
         }
       });
-    /*   $.ajax({
-        type: 'post',
-        url: './includes/forgotPassword.inc.php',
-        data: {
-          'forgotPasswordEmail': forgotPasswordEmailChacked,
-          'forgotPassword': forgotPasswordSubmit
-        },
-        success: (response) => {
-          if (response) {
-            console.log(response);
-          } else {
-            console.log(response);
-          }
-        }
-      }); */
     }
   });
   forgotPasswordEmail.focusout(() => {
@@ -388,30 +373,5 @@ $(document).ready(() => {
     }
   });
 })
-/* $(document).ready(function(){
-  $("#forgotPasswordForm").submit(function (e) {   
-  e.preventDefault();
-  let formData = new FormData(this);
-  $.ajax({
-          type: 'POST',
-          url: './includes/forgotPassword.inc.php',
-          enctype: 'multipart/form-data',
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (response) {
-            if (response) {
-              console.log(response);
-              //document.location.reload(true);
-            } else {
-             
-             console.log(response);
-            } 
-          }
-      }
-  );
-
-});
-}); */
 
 /* forgot passowrd end */
