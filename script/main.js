@@ -302,36 +302,78 @@ $(document).ready(() => {
     }
   });
 })
-/* $(document).ready(function(){
-  $("#loginForm").submit(function (e) {   
-  e.preventDefault();
-  let formData = new FormData(this);
-  $.ajax({
-          type: 'POST',
-          url: './includes/login.inc.php',
-          enctype: 'multipart/form-data',
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (response) {
-            if (response) {
-              console.log(response);
-              //document.location.reload(true);
-            } else {
-             
-             console.log(response);
-            } 
-          }
-      }
-  );
-
-});
-}); */
 
 /* login end */
 
 /* forgot password start */
-$(document).ready(function(){
+
+$(document).ready(() => {
+  const forgotPasswordEmail = $('#forgotPasswordEmail');
+  const forgotPasswordEmailMsg = $('.forgotPasswordEmail-error');
+  const regEmail = /^[a-z]+[0-9a-zA-Z_\.]*@[a-z_]+\.[a-z]+$/;
+
+  const forgotPasswordForm = $('#forgotPasswordForm');
+
+  forgotPasswordForm.submit((e) => {
+    e.preventDefault();
+    if ($('input').hasClass('invalid')) {
+      return false;
+    } else {
+      const forgotPasswordEmailChacked = forgotPasswordEmail.val();
+      const forgotPasswordSubmit = $('#forgotPassword');
+
+      $.ajax({
+        type: 'post',
+        url: './includes/forgotPassword.inc.php',
+        data: {
+          'forgotPasswordEmail': forgotPasswordEmailChacked,
+          'forgotPassword': forgotPasswordSubmit
+        },
+        success: function(response) {
+          if (response) {
+            console.log(response);
+          } else {
+            console.log(response);
+          }
+        }
+      });
+    }
+  });
+  forgotPasswordEmail.focusout(() => {
+    if (forgotPasswordEmail.val() == '') {
+      forgotPasswordEmailMsg.text('Email is requered !');
+      forgotPasswordEmail.removeClass('valid');
+      forgotPasswordEmail.addClass('invalid');
+    } else if (!regEmail.test(forgotPasswordEmail.val())) {
+      forgotPasswordEmailMsg.text('Enter valid email !');
+      forgotPasswordEmail.removeClass('valid');
+      forgotPasswordEmail.addClass('invalid');
+    } else {
+    let checkForgotPasswordEmail = forgotPasswordEmail.val();
+    $.ajax({
+      type: 'post',
+      url: './includes/forgotPassword.inc.php',
+      data: {
+        'checkForgotPasswordEmail': checkForgotPasswordEmail
+      },
+      success: function(response) {
+        if (response) {
+          console.log(response);
+          forgotPasswordEmailMsg.text('');
+          forgotPasswordEmail.removeClass('invalid');
+          forgotPasswordEmail.addClass('valid');
+        } else {
+          console.log(response);
+          forgotPasswordEmailMsg.text(response);
+          forgotPasswordEmail.removeClass('valid');
+          forgotPasswordEmail.addClass('invalid');
+        }
+      }
+    });
+    }
+  });
+})
+/* $(document).ready(function(){
   $("#forgotPasswordForm").submit(function (e) {   
   e.preventDefault();
   let formData = new FormData(this);
@@ -355,6 +397,6 @@ $(document).ready(function(){
   );
 
 });
-});
+}); */
 
 /* forgot passowrd end */
