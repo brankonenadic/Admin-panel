@@ -41,7 +41,7 @@ $(document).ready(() => {
             'rePassword': rePasswordChecked,
             'registar': registarSubmit
           },
-          success: function(response){
+          success: (response) => {
             if (response){
               console.log(response);
             } else {
@@ -75,7 +75,7 @@ $(document).ready(() => {
          data: {
            'checkedFullname': checkFullname
          },
-         success: function(response){
+         success: (response) => {
            if (response) {
               console.log(response);
               fullnameMsg.text('');
@@ -114,7 +114,7 @@ $(document).ready(() => {
           data: {
             'checkEmail': checkEmail
           },
-          success: function(response){
+          success: (response) => {
             if (response){
               console.log(response);
               registarEmailMsg.text('');
@@ -149,7 +149,7 @@ $(document).ready(() => {
             data: {
               'checkPassord': checkPassword
             },
-            success: function(response) {
+            success: (response) => {
               if (response) {
                 console.log(response);
                 registarPasswordMsg.text('');
@@ -219,7 +219,7 @@ $(document).ready(() => {
           'loginPassword': loginPasswordChecked,
           'login': loginSubmit
         },
-        success: function(response) {
+        success: (response) => {
           if (response) {
             console.log(response);
 
@@ -250,7 +250,7 @@ $(document).ready(() => {
         data: {
           'checkLoginEmail': checkLoginEmail
         },
-        success: function(response) {
+        success: (response) => {
           if (response) {
             console.log(response);
             loginEmailMsg.text('');
@@ -285,7 +285,7 @@ $(document).ready(() => {
         data: {
           'checkPassword': checkPassword
         },
-        success: function(response){
+        success: (response) => {
           if (response) {
             console.log(response);
             loginPasswordMsg.text('');
@@ -316,12 +316,12 @@ $(document).ready(() => {
 
   forgotPasswordForm.submit((e) => {
     e.preventDefault();
+
     if ($('input').hasClass('invalid')) {
       return false;
     } else {
       const forgotPasswordEmailChacked = forgotPasswordEmail.val();
       const forgotPasswordSubmit = $('#forgotPassword');
-
       $.ajax({
         type: 'post',
         url: './includes/forgotPassword.inc.php',
@@ -329,7 +329,7 @@ $(document).ready(() => {
           'forgotPasswordEmail': forgotPasswordEmailChacked,
           'forgotPassword': forgotPasswordSubmit
         },
-        success: function(response) {
+        success: (response) => {
           if (response) {
             console.log(response);
           } else {
@@ -337,6 +337,21 @@ $(document).ready(() => {
           }
         }
       });
+    /*   $.ajax({
+        type: 'post',
+        url: './includes/forgotPassword.inc.php',
+        data: {
+          'forgotPasswordEmail': forgotPasswordEmailChacked,
+          'forgotPassword': forgotPasswordSubmit
+        },
+        success: (response) => {
+          if (response) {
+            console.log(response);
+          } else {
+            console.log(response);
+          }
+        }
+      }); */
     }
   });
   forgotPasswordEmail.focusout(() => {
@@ -356,7 +371,7 @@ $(document).ready(() => {
       data: {
         'checkForgotPasswordEmail': checkForgotPasswordEmail
       },
-      success: function(response) {
+      success: (response) => {
         if (response) {
           console.log(response);
           forgotPasswordEmailMsg.text('');
