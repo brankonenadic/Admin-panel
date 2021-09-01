@@ -42,12 +42,15 @@ $(document).ready(() => {
             'registar': registarSubmit
           },
           success: (response) => {
-            if (response){
-              console.log(response);
-            } else {
-              xonsole.log(response);
-            }
+         if (response) {
+          let errorArr = JSON.parse(response);
+          if (errorArr.valid == true){
+            console.log(errorArr.msg);
+          } else {
+            console.log(errorArr.msg);
           }
+        }
+         }
 
         });
       }
@@ -115,17 +118,19 @@ $(document).ready(() => {
             'checkEmail': checkEmail
           },
           success: (response) => {
-            if (response){
-              console.log(response);
+            if (response) { 
+            let errorArr = JSON.parse(response);
+            if (errorArr.valid == true){
+              console.log(errorArr.msg);
               registarEmailMsg.text('');
               registarEmail.removeClass('invalid');
               registarEmail.addClass('valid');
             } else {
-              console.log(response);
-              registarEmailMsg.text(response);
+              console.log(errorArr.msg);
+              registarEmailMsg.text(errorArr.msg);
               registarEmail.removeClass('valid');
               registarEmail.addClass('invalid');
-            }
+            } }
           }
         });
       }
