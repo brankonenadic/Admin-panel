@@ -42,14 +42,13 @@ $(document).ready(() => {
             'registar': registarSubmit
           },
           success: (response) => {
-         if (response) {
+            console.log(response);
           let errorArr = JSON.parse(response);
           if (errorArr.valid == true){
             console.log(errorArr.msg);
           } else {
             console.log(errorArr.msg);
           }
-        }
          }
 
         });
@@ -118,8 +117,9 @@ $(document).ready(() => {
             'checkEmail': checkEmail
           },
           success: (response) => {
-            if (response) { 
+          
             let errorArr = JSON.parse(response);
+           
             if (errorArr.valid == true){
               console.log(errorArr.msg);
               registarEmailMsg.text('');
@@ -130,7 +130,7 @@ $(document).ready(() => {
               registarEmailMsg.text(errorArr.msg);
               registarEmail.removeClass('valid');
               registarEmail.addClass('invalid');
-            } }
+            } 
           }
         });
       }

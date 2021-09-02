@@ -1,6 +1,6 @@
 <?php
 include 'autoloader.inc.php';
-print_r($_POST);
+
 $validation = new Validation;
 $check = new UserClass;
 if (isset($_POST['checkEmail'])) {
@@ -13,6 +13,18 @@ if (isset($_POST['checkEmail'])) {
         
     } else { 
         $error =["valid" => true,"msg" => "*Email available !"];
+        echo json_encode($error);
+        
+    } 
+}
+if (isset($_POST['checkedFullname'])) {
+    $validationFullname = $validation->fullnameValidation($_POST['checkedFullname']);
+   
+    if ($validationFullname == false) {
+        $error =["valid" => false,"msg" => "*Enter valid name !"];
+        echo json_encode($error);
+    } else { 
+        $error =["valid" => true,"msg" => "*Success !"];
         echo json_encode($error);
         
     } 

@@ -3,7 +3,7 @@
 <!-- section-jumbotron start -->
 <section id="section-jumbotron" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
     <div class="container text-center">
-    <h3 class="display-4 text-center text-dark m-5">Login and regisraton sistem </h3>
+    <h3 class="display-4 text-center text-dark m-5">Login and registration system </h3>
     <h5 class="display-6 text-center text-dark">By :</h5>
         <img class="img-responsive" src=".\assets\img\logo\LTblack2.png" alt="">
         <h3 class="display-4 text-center text-dark">Welcome</h3>
