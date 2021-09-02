@@ -29,8 +29,19 @@ if (isset($_POST['checkedFullname'])) {
         
     } 
 }
+if (isset($_POST['checkPassord'])) {
+    $validationPassword = $validation->passwordValidation($_POST['checkPassord']);
+    if ($validationPassword == false) {
+        $error =["valid" => false,"msg" => "*Enter valid password !"];
+        echo json_encode($error);
+    } else { 
+        $error =["valid" => true,"msg" => "*Success !"];
+        echo json_encode($error);
+        
+    }  
+}
 if (isset($_POST['registar'])) {
-    $fullname = $_POST['fullname'];
+  /*   $fullname = $_POST['fullname'];
     $email = $_POST['registarEmail'];
     $password = $_POST['registarPassword'];
     $validationFullname = $validation->fullnameValidation($fullname);
@@ -40,6 +51,10 @@ if (isset($_POST['registar'])) {
     if ($validationFullname == false) {
         $error =["valid" => false,"msg" => "*Enter valid name !"];
         echo json_encode($error);
-    }
+    } */
+    $error =["valid" => true,"msg" => "*Success !"];
+        echo json_encode($error);
+    
+    
 }
 ?>
