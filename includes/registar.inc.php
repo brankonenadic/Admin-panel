@@ -16,8 +16,7 @@ if (isset($_POST['checkEmail'])) {
         echo json_encode($error);
         
     } 
-}
-if (isset($_POST['checkedFullname'])) {
+} else if (isset($_POST['checkedFullname'])) {
     $validationFullname = $validation->fullnameValidation($_POST['checkedFullname']);
    
     if ($validationFullname == false) {
@@ -28,8 +27,7 @@ if (isset($_POST['checkedFullname'])) {
         echo json_encode($error);
         
     } 
-}
-if (isset($_POST['checkPassord'])) {
+} else if (isset($_POST['checkPassord'])) {
     $validationPassword = $validation->passwordValidation($_POST['checkPassord']);
     if ($validationPassword == false) {
         $error =["valid" => false,"msg" => "*Enter valid password !"];
@@ -39,22 +37,27 @@ if (isset($_POST['checkPassord'])) {
         echo json_encode($error);
         
     }  
+} else {
+    if (isset($_POST['registar'])) {
+        $fullname = $_POST['fullname'];
+        $email = $_POST['registarEmail'];
+        $password = $_POST['registarPassword'];
+        $datetime = date('Y-m-d H:i:s');
+        $token = md5($fullname.$password.$datetime);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        
+        $registar = $check->userRegistration($fullname,$email,$hashedPassword,$token,$datetime);
+        if ($registar == true) {
+            $error =["valid" => true,"msg" => "*Success insert new user!"];
+            echo json_encode($error);
+        } else {
+            $error =["valid" => false,"msg" => "*Error registration new user !"];
+            echo json_encode($error);
+        }
+    } else {
+        $error =["valid" => false,"msg" => "*Error registration !"];
+        echo json_encode($error);
+    }
 }
-if (isset($_POST['registar'])) {
-  /*   $fullname = $_POST['fullname'];
-    $email = $_POST['registarEmail'];
-    $password = $_POST['registarPassword'];
-    $validationFullname = $validation->fullnameValidation($fullname);
-    $validationEmail = $validation->emailValidation($email);
-    $validationPassword = $validation->passwordValidation($password);
 
-    if ($validationFullname == false) {
-        $error =["valid" => false,"msg" => "*Enter valid name !"];
-        echo json_encode($error);
-    } */
-    $error =["valid" => true,"msg" => "*Success !"];
-        echo json_encode($error);
-    
-    
-}
 ?>
