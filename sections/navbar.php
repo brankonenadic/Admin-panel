@@ -21,12 +21,30 @@
               </li>
             </ul>
             <ul class="navbar-nav navbar-right" id="navScrollspy">
-              <li class="nav-item">
-                <a class="nav-link" href="./registar">Registar page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./login">Login page</a>
-              </li>
+             
+                <?php if ($_SESSION['login']) {
+                          echo '
+                          <li class="nav-item">
+                          <a class="nav-link" href="#">Profil page</a>
+                          </li>
+                          <li class="nav-item">
+                          <a class="nav-link" href="./includes/logout.inc.php">Logout page</a>
+                          </li>
+                          
+                          ';
+                      } else {
+                          echo '
+                          <li class="nav-item">
+                          <a class="nav-link" href="./registar">Registar page</a>
+                          </li>
+                          <li class="nav-item">
+                          <a class="nav-link" href="./login">Login page</a>
+                          </li>
+                          ';
+                      }
+                
+                ?>
+             
             </ul>
   </div>
 </nav>

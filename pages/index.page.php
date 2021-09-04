@@ -19,7 +19,7 @@
 </section>
 <!-- section-discription end -->
 </div>
-
+<!-- section-footer start -->
 <section id="section-footer" class="row justify-content-center p-3 border-top bg-light">
 <div class="col p-1 mt-2">
     <div class="row d-flex p-1">

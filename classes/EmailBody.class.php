@@ -1,7 +1,8 @@
 <?php
 class EmailBody{
-
+    
     public function validationEmail($id , $token){
+     
         return '
         <!DOCTYPE html>
         <html>
@@ -145,7 +146,7 @@ class EmailBody{
                                         <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                             <table border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="https://branko.dev.lab387.com/v1/includes/activate.inc.php?id='.$id.'&token='.$token.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
+                                                    <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="http://localhost/brankonenadic/github/Admin%20panel/Admin-panel/includes/activate.inc.php?id=22&token=575473b12736a31dcd8ed4929a61f6c6" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
                                                 </tr>
                                             </table>
                                         </td>

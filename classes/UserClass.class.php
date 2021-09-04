@@ -73,6 +73,40 @@ class UserClass extends Connection {
         mysqli_close($conn);
     }
 
+    public function activate($id, $token) {
+      $this->Connect();
+      $sql = ("SELECT * FROM users WHERE id='$id' AND token = '$token'");
+      $activate = $this->conn->query($sql);
+      $numRows = $activate->num_rows;
+      $row = $activate->fetch_assoc();
+    
+      $timeSet = strtotime($row['datetime']);
+      $timeNow = strtotime(date('Y-m-d H:i:s'));
+    
+    $sql = $timeNow - $timeSet;
+      $hours =$sql / ( 60 * 60 );
+    
+      if ($numRows > 0) {
+        if ($hours < 1) {
+          
+          if($update = $this->conn->query("UPDATE users SET status='1' WHERE id='$id'") == true) {
+            return true;
+          } else {
+            echo "Error: " . mysqli_error($this->conn);
+            return false;
+          }
+        } else {
+          //header('location: ../error_activation');
+          return false;
+        }
+      } else {
+        //header('location: ../error_activation');
+        return false;
+      }
+    }
+
+
+/* UserClass end */
 }
 
 
