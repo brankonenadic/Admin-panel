@@ -25,15 +25,42 @@ class UserClass extends Connection {
     /* Registration new user */
     public function userRegistration($fullname,$email,$password,$token,$datetime) {
         $this->Connect();
-      
-        $insert = $this->conn->query("INSERT INTO users (fullname, userEmail, userPassword, token, datetime, status) VALUES ('$fullname', '$email', '$password', '$token', '$datetime', '2')");
-        if ($insert == true) {
-          return true;
-         
-        }else {
-          return false;
-        
+        $conn = $this->conn;
+  
+        $check = $this->conn->prepare("SELECT * FROM users WHERE userEmail=? AND status<>'0'");
+        $check->bind_param("s", $email);
+        $check->execute();
+        $check->store_result();
+        $numRow = $check->num_rows;
+        $status = '2';
+        $check->close();
+        if ($numRow >= 1) {
+            //header('location: login');
+            return false;
+        } else {
+          
+            $sql  = "INSERT INTO users (fullname, userEmail, userPassword, datetime, token, status) VALUES(?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_stmt_init($conn);
+            
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+               
+                exit();
+                //header("location: https://office.dev.lab387.com/v3/error?error=8");
+                return false;
+                
+            } else {
+                mysqli_stmt_bind_param($stmt, "ssssss", $fullname, $email, $password, $datetime, $token, $status);
+                if (!mysqli_stmt_execute($stmt)) {
+                    //echo "Error inserting record: " . mysqli_error($this->conn);
+                    exit();
+                    return false;
+                   //header("location: https://office.dev.lab387.com/v3/error?error=8");
+                }
+                mysqli_stmt_close($stmt);
+            }
         }
+        return true;
+        mysqli_close($conn);
     }
 
 }

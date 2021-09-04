@@ -61,3 +61,23 @@ if (isset($_POST['checkEmail'])) {
 }
 
 ?>
+
+<!--      $id = $registar->user_id($user_email, $user_password);
+    echo $id;
+      Include ('sendmail.inc.php');
+
+        $to = $user_email;
+         
+        $coll = new EmailBody();
+        $body = $coll->validation_email($id , $token); 
+         
+        $subject = "Verification email";
+        
+        if(send_mail($to, $body, $subject)) {
+          $error = '*Verification email is sent';
+          echo $error;
+          } 
+          else {
+            $error = '*Verification email is not sent';
+            echo $error;
+          }  -->
