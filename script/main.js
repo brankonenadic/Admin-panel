@@ -78,14 +78,16 @@ $(document).ready(() => {
            'checkedFullname': checkFullname
          },
          success: (response) => {
-           if (response) {
-              console.log(response);
+          let errorArr = JSON.parse(response);
+           
+          if (errorArr.valid == true){
+            console.log(errorArr.msg);
               fullnameMsg.text('');
               fullname.removeClass('invalid');
               fullname.addClass('valid'); 
            } else {
-              console.log(response);
-              fullnameMsg.text(response);
+              console.log(errorArr.msg);
+              fullnameMsg.text(errorArr.msg);
               fullname.removeClass('valid');
               fullname.addClass('invalid'); 
            }
@@ -155,14 +157,16 @@ $(document).ready(() => {
               'checkPassord': checkPassword
             },
             success: (response) => {
-              if (response) {
-                console.log(response);
+              let errorArr = JSON.parse(response);
+           
+              if (errorArr.valid == true){
+                console.log(errorArr.msg);
                 registarPasswordMsg.text('');
                 registarPassword.removeClass('invalid');
                 registarPassword.addClass('valid');
               } else {
-                console.log(response);
-                registarPasswordMsg.text(response);
+                console.log(errorArr.msg);
+                registarPasswordMsg.text(errorArr.msg);
                 registarPassword.removeClass('valid');
                 registarPassword.addClass('invalid');
               }

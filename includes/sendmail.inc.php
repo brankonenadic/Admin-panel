@@ -10,7 +10,7 @@ function send_mail($to, $body, $subject)
 	$mail->Host = 'smtp.gmail.com';
 	$mail->SMTPAuth = true;
 	$mail->Username = 'lanintata.dev@mail.com';
-	$mail->Password = '2810Lana15!';
+	$mail->Password = '';
 	$mail->SMTPSecure = 'ssl';
 	$mail->Port = 465;
 	*/

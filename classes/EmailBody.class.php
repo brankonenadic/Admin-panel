@@ -1,7 +1,7 @@
 <?php
 class EmailBody{
 
-    public function validation_email($id , $token){
+    public function validationEmail($id , $token){
         return '
         <!DOCTYPE html>
         <html>

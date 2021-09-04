@@ -5,12 +5,15 @@ $validation = new Validation;
 $check = new UserClass;
 if (isset($_POST['checkEmail'])) {
     $chackEmail= $check->checkEmail($_POST['checkEmail']);
-   
+    $validateEmail =$validation->emailValidation($_POST['checkEmail']);
     if ($chackEmail > 0) {
     
         $error =["valid"=> false,"msg" => "*Email is alredy registered !"];
         echo json_encode($error);
         
+    } else if ($validateEmail == true) {
+        $error =["valid"=> false,"msg" => "*Enter valid email !"];
+        echo json_encode($error);
     } else { 
         $error =["valid" => true,"msg" => "*Email available !"];
         echo json_encode($error);
@@ -23,7 +26,7 @@ if (isset($_POST['checkEmail'])) {
         $error =["valid" => false,"msg" => "*Enter valid name !"];
         echo json_encode($error);
     } else { 
-        $error =["valid" => true,"msg" => "*Success !"];
+        $error =["valid" => true,"msg" => "*Success fullname !"];
         echo json_encode($error);
         
     } 
@@ -33,10 +36,11 @@ if (isset($_POST['checkEmail'])) {
         $error =["valid" => false,"msg" => "*Enter valid password !"];
         echo json_encode($error);
     } else { 
-        $error =["valid" => true,"msg" => "*Success !"];
+        $error =["valid" => true,"msg" => "*Success password !"];
         echo json_encode($error);
         
     }  
+      
 } else {
     if (isset($_POST['registar'])) {
         $fullname = $_POST['fullname'];
@@ -48,8 +52,25 @@ if (isset($_POST['checkEmail'])) {
         
         $registar = $check->userRegistration($fullname,$email,$hashedPassword,$token,$datetime);
         if ($registar == true) {
-            $error =["valid" => true,"msg" => "*Success insert new user!"];
-            echo json_encode($error);
+            $id = $check->userId($email, $hashedPassword);
+            Include ('sendmail.inc.php');
+
+            $to = $email;
+             
+            $coll = new EmailBody;
+            $body = $coll->validationEmail($id , $token); 
+             
+            $subject = "Verification email";
+            
+            if(send_mail($to, $body, $subject)) {
+                $error =["valid" => true,"msg" => "*Verification email is sent!"];
+                echo json_encode($error);
+              } else {
+                $error =["valid" => false,"msg" => "*Verification email is not sent'!"];
+                echo json_encode($error);
+              } 
+         /*    $error =["valid" => true,"msg" => "*Success insert new user!"];
+            echo json_encode($error); */
         } else {
             $error =["valid" => false,"msg" => "*Error registration new user !"];
             echo json_encode($error);
@@ -62,22 +83,3 @@ if (isset($_POST['checkEmail'])) {
 
 ?>
 
-<!--      $id = $registar->user_id($user_email, $user_password);
-    echo $id;
-      Include ('sendmail.inc.php');
-
-        $to = $user_email;
-         
-        $coll = new EmailBody();
-        $body = $coll->validation_email($id , $token); 
-         
-        $subject = "Verification email";
-        
-        if(send_mail($to, $body, $subject)) {
-          $error = '*Verification email is sent';
-          echo $error;
-          } 
-          else {
-            $error = '*Verification email is not sent';
-            echo $error;
-          }  -->

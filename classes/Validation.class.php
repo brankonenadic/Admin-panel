@@ -11,7 +11,7 @@ class Validation {
     }
 
     public function emailValidation($email) {
-        if (filter_var(htmlentities($email, ENT_QUOTES), FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var(htmlentities($email, ENT_QUOTES), FILTER_VALIDATE_EMAIL)) {
             return true;
         } else {
             return false;

@@ -22,6 +22,16 @@ class UserClass extends Connection {
         $numRows = $check->num_rows;
           return $numRows;
     }
+    public function userId($email, $password)
+    {
+        $this->Connect();
+
+        $result = $this->conn->query("SELECT id FROM users WHERE userEmail = '$email' AND userPassword = '$password'");
+        $row = $result->fetch_assoc();
+        $id = $row['id'];
+
+        return $id;
+    }
     /* Registration new user */
     public function userRegistration($fullname,$email,$password,$token,$datetime) {
         $this->Connect();
