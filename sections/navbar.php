@@ -22,7 +22,7 @@
             </ul>
             <ul class="navbar-nav navbar-right" id="navScrollspy">
              
-                <?php if ($_SESSION['login']) {
+                <?php if (isset($_SESSION['login'])) {
                           echo '
                           <li class="nav-item">
                           <a class="nav-link" href="#">Profil page</a>
