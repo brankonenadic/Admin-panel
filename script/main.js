@@ -260,14 +260,16 @@ $(document).ready(() => {
           'checkLoginEmail': checkLoginEmail
         },
         success: (response) => {
-          if (response) {
-            console.log(response);
+          let errorArr = JSON.parse(response);
+           
+          if (errorArr.valid == true){
+            console.log(errorArr.msg);
             loginEmailMsg.text('');
             loginEmail.removeClass('invalid');
             loginEmail.addClass('valid');
           } else {
-            console.log(response);
-            loginEmailMsg.test(response);
+            console.log(errorArr.msg);
+            loginEmailMsg.text(errorArr.msg);
             loginEmail.removeClass('valid');
             loginEmail.addClass('invalid');
           }
@@ -292,17 +294,19 @@ $(document).ready(() => {
         type: 'post',
         url: './includes/login.inc.php',
         data: {
-          'checkPassword': checkPassword
+          'checkLoginPassword': checkPassword
         },
         success: (response) => {
-          if (response) {
-            console.log(response);
+          let errorArr = JSON.parse(response);
+          console.log(errorArr);
+          if (errorArr.valid == true){
+            console.log(errorArr.msg);
             loginPasswordMsg.text('');
             loginPassword.removeClass('invalid');
             loginPassword.addClass('valid');
           } else {
-            console.log(response);
-            loginPasswordMsg.text(response);
+            console.log(errorArr.msg);
+            loginPasswordMsg.text(errorArr.msg);
             loginPassword.removeClass('valid');
             loginPassword.addClass('invalid');
           }

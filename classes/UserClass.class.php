@@ -22,6 +22,30 @@ class UserClass extends Connection {
         $numRows = $check->num_rows;
           return $numRows;
     }
+   /* Check password */
+   public function checkPassword($email, $password)
+   {
+       $this->Connect();
+   
+       $sql = $this->conn->query("SELECT * FROM users WHERE userEmail='$email'  LIMIT 1");
+       $numRow = $sql->num_rows;
+       $row = $sql->fetch_assoc();
+
+       if ($numRow == 1) {
+          
+           if (password_verify($password, $row['userPassword'])) {
+               return true;
+           } else {
+               echo mysqli_error($this->conn);
+               return false;
+           }
+       } else {
+           echo mysqli_error($this->conn);
+           return false;
+       }
+   }
+
+
     public function userId($email, $password)
     {
         $this->Connect();
@@ -72,7 +96,7 @@ class UserClass extends Connection {
         return true;
         mysqli_close($conn);
     }
-
+    /* Activate new user */
     public function activate($id, $token) {
       $this->Connect();
       $sql = ("SELECT * FROM users WHERE id='$id' AND token = '$token'");
@@ -104,7 +128,7 @@ class UserClass extends Connection {
         return false;
       }
     }
-
+ 
 
 /* UserClass end */
 }
