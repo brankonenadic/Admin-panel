@@ -229,11 +229,14 @@ $(document).ready(() => {
           'login': loginSubmit
         },
         success: (response) => {
-          if (response) {
-            console.log(response);
+          console.log(response);
+          let errorArr = JSON.parse(response);
+       
+          if (errorArr.valid == true){
+            console.log(errorArr.msg);
 
           } else {
-            console.log(response);
+            console.log(errorArr.msg);
 
           }
         }
@@ -260,6 +263,7 @@ $(document).ready(() => {
           'checkLoginEmail': checkLoginEmail
         },
         success: (response) => {
+          console.log(response);
           let errorArr = JSON.parse(response);
            
           if (errorArr.valid == true){
@@ -288,17 +292,18 @@ $(document).ready(() => {
       loginPassword.removeClass('valid');
       loginPassword.addClass('invalid');
     } else {
-      let checkPassword = loginPassword.val();
+      let checheckLoginPassword = loginPassword.val();
 
       $.ajax({
         type: 'post',
         url: './includes/login.inc.php',
         data: {
-          'checkLoginPassword': checkPassword
+          'checkLoginPassword': checheckLoginPassword
         },
         success: (response) => {
+       
           let errorArr = JSON.parse(response);
-          console.log(errorArr);
+       
           if (errorArr.valid == true){
             console.log(errorArr.msg);
             loginPasswordMsg.text('');
