@@ -377,14 +377,18 @@ $(document).ready(() => {
         'checkForgotPasswordEmail': checkForgotPasswordEmail
       },
       success: (response) => {
-        if (response) {
-          console.log(response);
+        console.log(response);
+        let errorArr = JSON.parse(response);
+     
+        if (errorArr.valid == true){
+          console.log(errorArr.msg);
           forgotPasswordEmailMsg.text('');
           forgotPasswordEmail.removeClass('invalid');
           forgotPasswordEmail.addClass('valid');
         } else {
           console.log(response);
-          forgotPasswordEmailMsg.text(response);
+          console.log(errorArr.msg);
+          forgotPasswordEmailMsg.text(errorArr.msg);
           forgotPasswordEmail.removeClass('valid');
           forgotPasswordEmail.addClass('invalid');
         }
