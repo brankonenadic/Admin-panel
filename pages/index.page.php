@@ -13,6 +13,7 @@
 <div class="main-section p-3">
 <!-- section-discription start -->
 <section id="section-description" class="p-3">
+  
         <h4 class="display-5 text-center">Complite login and registraton system with admin panel and profile page</h4>
         <p>Cameo is an innovative camera app for both iOS and Android that lets you capture the best moments in life either on still photos or video. Cameo have many useful features to enhance the photos and videos with editing tools, filters and effects. And when you're done you can easily share your result with all of your friends and the rest of the world through Instagram.</p>
         <p>Cameo has been designed from the bottom up by photography experts and award-winning app developers to make sure you get the best camera app ever created. We are continuously improving the app with new features – this is just the beginning.</p>

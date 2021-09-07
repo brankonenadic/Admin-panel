@@ -234,10 +234,12 @@ $(document).ready(() => {
        
           if (errorArr.valid == true){
             console.log(errorArr.msg);
-
+            document.location.href = './index';
           } else {
             console.log(errorArr.msg);
-
+            loginPasswordMsg.text(errorArr.msg);
+            loginPassword.removeClass('valid');
+            loginPassword.addClass('invalid');
           }
         }
       });
@@ -301,7 +303,7 @@ $(document).ready(() => {
           'checkLoginPassword': checheckLoginPassword
         },
         success: (response) => {
-       
+          console.log(response);
           let errorArr = JSON.parse(response);
        
           if (errorArr.valid == true){

@@ -29,8 +29,8 @@ class UserClass extends Connection {
        $sql = $this->conn->query("SELECT * FROM users WHERE userEmail='$email'  LIMIT 1");
        $numRow = $sql->num_rows;
        $row = $sql->fetch_assoc();
-
-       if ($numRow == 1) {          
+ 
+      if ($numRow == 1) {          
            if (password_verify($password, $row['userPassword'])) {
                return true;
            } else {
@@ -40,7 +40,7 @@ class UserClass extends Connection {
        } else {
            //echo mysqli_error($this->conn);
            return false;
-       }
+       } 
    }
 
 
@@ -126,7 +126,59 @@ class UserClass extends Connection {
         return false;
       }
     }
+ /* Login */
+ public function login($email, $password)
+ {
+     $this->Connect();
  
+     $sql = "SELECT * FROM users WHERE userEmail=? AND status<>'0' LIMIT 1";
+     $stmt = mysqli_stmt_init($this->conn);
+     if (!mysqli_stmt_prepare($stmt, $sql)) { 
+         exit();
+         //header("location: ");
+         return false;
+     } else {
+         mysqli_stmt_bind_param($stmt, "s", $email);
+         mysqli_stmt_execute($stmt);
+
+         if (!$result = mysqli_stmt_get_result($stmt)) {
+           echo "Error updating record: " . mysqli_error($this->conn);
+             //header("location: ");
+         }
+     }
+     $count_row = $result->num_rows;
+     $row = mysqli_fetch_assoc($result);
+
+     if ($count_row == 1) {
+         if (password_verify($password, $row['userPassword'])) {
+             if ($row['status'] == 1) {
+                 if (session_status() == PHP_SESSION_NONE) {
+                     session_start();
+                 }
+         
+
+                 $_SESSION['login'] = true;
+
+                 $_SESSION['userId'] =  $row['id'];
+
+                 $_SESSION['userType'] =  $row['userType'];
+
+                 return true;
+             } else {
+                 return false;
+                 //header("location: ");
+             }
+         } else {
+             return false;
+             //header("location: ");
+         }
+     } else {
+         return false;
+         //header("location: ");
+
+         //  header ('location: register_page');
+     }
+ }
 
 /* UserClass end */
 }
