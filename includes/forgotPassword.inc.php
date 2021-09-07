@@ -20,7 +20,6 @@ if (isset($_POST['checkForgotPasswordEmail'])) {
         echo json_encode($error);
         
     }
-
    
 } else {
   if (isset($_POST['forgotPassword'])) {
