@@ -9,15 +9,15 @@ function send_mail($to, $body, $subject)
 	$mail->isSMTP();
 	$mail->Host = 'smtp.gmail.com';
 	$mail->SMTPAuth = true;
-	$mail->Username = 'lanintata.dev@mail.com';
+	$mail->Username = 'lanintata.dev@gmail.com';
 	$mail->Password = '';
 	$mail->SMTPSecure = 'ssl';
 	$mail->Port = 465;
 	*/
-	$mail->From = 'lanintata.dev@mail.com';
+	$mail->From = 'lanintata.dev@gmail.com';
 	$mail->FromName = 'LaninTata';
 	$mail->addAddress($to);
-	$mail->addReplyTo('lanintata.dev@mail.com', 'Reply');
+	$mail->addReplyTo('lanintata.dev@gmail.com', 'Reply');
 	
 	$mail->isHTML(true);
 	

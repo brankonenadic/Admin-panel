@@ -23,6 +23,43 @@ if (isset($_POST['checkForgotPasswordEmail'])) {
    
 } else {
   if (isset($_POST['forgotPassword'])) {
+
+
+
+/* 
+if (isset($_POST['forgot_password'])){
+    $user_email = $_POST['forgot_password_email'];
+    $id = $result->forgot_pw_user_id($user_email);
+    $datetime = date('Y-m-d H:i:s');
+    $token = md5($id.$user_email.$datetime);
+    $_SESSION['new_pw_email'] = $_POST['forgot_password_email'];
+    $_SESSION['new_pw_id'] = $id;
+    $update_token = $result->forgot_password($id , $token , $datetime);
+    if ($update_token == true){
+        Include ("sendmail.inc.php");
+        $to = "$user_email";
+        $coll = new EmailBody();
+        $body = $coll->forgotpw_email($id, $token);      
+        $subject = "New password";
+        if (send_mail($to, $body, $subject)) {
+            $error = '*Email is sent';
+            echo $error;
+        } else{
+            $error = '*Email is not sent';
+            echo $error;
+        } 
+    } else {
+        $error = '*Error update token';
+        echo $error;
+    }
+*/
+
+
+
+
+
+
+
     $error =["valid"=> true,"msg" => "*Email is ok !"];
         echo json_encode($error);
   } else {
