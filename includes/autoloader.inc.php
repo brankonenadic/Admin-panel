@@ -9,5 +9,3 @@ function autoloader($className) {
 
   include_once $fullPath;
 }
-
-?>

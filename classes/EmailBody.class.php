@@ -1,8 +1,10 @@
 <?php
-class EmailBody{
-    
-    public function validationEmail($id , $token){
-     
+class EmailBody
+{
+
+    public function validationEmail($id, $token)
+    {
+
         return '
         <!DOCTYPE html>
         <html>
@@ -146,7 +148,7 @@ class EmailBody{
                                         <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                             <table border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="http://localhost/brankonenadic/github/Admin%20panel/Admin-panel/includes/activate.inc.php?id='.$id.'&token='.$token.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
+                                                    <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="http://localhost/brankonenadic/github/Admin%20panel/Admin-panel/includes/activate.inc.php?id=' . $id . '&token=' . $token . '" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -161,7 +163,7 @@ class EmailBody{
                         </tr> <!-- COPY -->
                         <tr>
                             <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #5A008F; font-family: \'Lato\', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/includes/activate.inc.php?id='.$id.'&token='.$token.'</p>
+                                <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/includes/activate.inc.php?id=' . $id . '&token=' . $token . '</p>
                             </td>
                         </tr>
                         <tr>
@@ -183,9 +185,11 @@ class EmailBody{
         
         </html>
     
-    ';}
+    ';
+    }
 
-    public function forgotpw_email($id , $token) {
+    public function forgotpw_email($id, $token)
+    {
         return '
         <!DOCTYPE html>
         <html>
@@ -329,7 +333,7 @@ class EmailBody{
                                         <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                             <table border="0" cellspacing="0" cellpadding="0">
                                                 <tr>
-                                                    <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="https://branko.dev.lab387.com/v1/includes/activate.inc.php?recover_id='.$id.'&recover_token='.$token.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
+                                                    <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="https://branko.dev.lab387.com/v1/includes/activate.inc.php?recover_id=' . $id . '&recover_token=' . $token . '" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -344,7 +348,7 @@ class EmailBody{
                         </tr> <!-- COPY -->
                         <tr>
                             <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #5A008F; font-family: \'Lato\', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/includes/activate.inc.php?recover_id='.$id.'&recover_token='.$token.'</p>
+                                <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/includes/activate.inc.php?recover_id=' . $id . '&recover_token=' . $token . '</p>
                             </td>
                         </tr>
                         <tr>
@@ -366,12 +370,14 @@ class EmailBody{
         
         </html>
     
-    ';}
+    ';
+    }
 
 
 
-public function newpw_email($id , $token) {
-    return '
+    public function newpw_email($id, $token)
+    {
+        return '
     <!DOCTYPE html>
     <html>
     
@@ -514,7 +520,7 @@ public function newpw_email($id , $token) {
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="https://branko.dev.lab387.com/v1/login?id='.$id.'&token='.$token.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
+                                                <td align="center" style="border-radius: 20px;" bgcolor="#5A008F"><a href="https://branko.dev.lab387.com/v1/login?id=' . $id . '&token=' . $token . '" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #5A008F; display: inline-block;">Confirm Account</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -529,7 +535,7 @@ public function newpw_email($id , $token) {
                     </tr> <!-- COPY -->
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #5A008F; font-family: \'Lato\', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/login?id='.$id.'&token='.$token.'</p>
+                            <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/login?id=' . $id . '&token=' . $token . '</p>
                         </td>
                     </tr>
                     <tr>
@@ -551,10 +557,12 @@ public function newpw_email($id , $token) {
     
     </html>
 
-';}
+';
+    }
 
-public function delete_user_email($id , $token) {
-    return '
+    public function delete_user_email($id, $token)
+    {
+        return '
     <!DOCTYPE html>
     <html>
     
@@ -697,7 +705,7 @@ public function delete_user_email($id , $token) {
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 20px;" bgcolor="#dc3545"><a href="https://branko.dev.lab387.com/v1/login?id='.$id.'&token='.$token.'" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #dc3545; display: inline-block;">Recover Account</a></td>
+                                                <td align="center" style="border-radius: 20px;" bgcolor="#dc3545"><a href="https://branko.dev.lab387.com/v1/login?id=' . $id . '&token=' . $token . '" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 20px; border: 1px solid #dc3545; display: inline-block;">Recover Account</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -712,7 +720,7 @@ public function delete_user_email($id , $token) {
                     </tr> <!-- COPY -->
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #dc3545; font-family: \'Lato\', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/login?id='.$id.'&token='.$token.'</p>
+                            <p style="margin: 0; color= #5A008F;">https://branko.dev.lab387.com/v1/login?id=' . $id . '&token=' . $token . '</p>
                         </td>
                     </tr>
                     <tr>
@@ -734,9 +742,11 @@ public function delete_user_email($id , $token) {
     
     </html>
 
-';}
-public function delete_employees_email() {
-    return '
+';
+    }
+    public function delete_employees_email()
+    {
+        return '
     <!DOCTYPE html>
     <html>
     
@@ -915,6 +925,6 @@ public function delete_employees_email() {
     
     </html>
 
-';}
-
+';
+    }
 }
