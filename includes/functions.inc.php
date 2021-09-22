@@ -168,6 +168,7 @@ function load_page($page){
                 case 'index':  
                 case 'registar':  
                 case 'login': 
+                case 'profile':
                 case 'forgotPassword': 
                 case 'new_password':        
                 case 'success':  

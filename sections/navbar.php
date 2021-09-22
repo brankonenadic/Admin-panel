@@ -25,7 +25,7 @@
                 <?php if (isset($_SESSION['login'])) {
                           echo '
                           <li class="nav-item">
-                          <a class="nav-link" href="#">Profil page</a>
+                          <a class="nav-link" href="./profile">Profil page</a>
                           </li>
                           <li class="nav-item">
                           <a class="nav-link" href="./includes/logout.inc.php">Logout page</a>
